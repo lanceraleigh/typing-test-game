@@ -7,17 +7,17 @@
     <p>Time: {{}}</p>
   </div>
   <keyBoard />
-  <form action="" id="keyboardForm">
-    <input type="text" id="keyboardInput" @keypress="keystrokeChecker" />
-  </form>
+  <textPrompt @keystroke-checker="setCurrentKey" />
 </template>
 
 <script>
 import keyBoard from "../components/keyBoard.vue";
+import textPrompt from "../components/textPrompt.vue";
 export default {
   name: "TestHome",
   components: {
     keyBoard,
+    textPrompt,
   },
   data() {
     return {
@@ -28,8 +28,8 @@ export default {
     };
   },
   methods: {
-    keystrokeChecker(e) {
-      this.currentKey = e.key;
+    setCurrentKey(k) {
+      this.currentKey = k;
     },
   },
 };

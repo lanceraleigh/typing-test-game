@@ -10,5 +10,18 @@
 <script>
 export default {
   name: "textPrompt",
+  methods: {
+    keystrokeChecker(e) {
+      this.$emit("keystroke-checker", e.key);
+    },
+  },
 };
 </script>
+
+<style scoped>
+#keyboardInput {
+  height: 20rem;
+  width: 40rem;
+  caret-color: transparent;
+}
+</style>
