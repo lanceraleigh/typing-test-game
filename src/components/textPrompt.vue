@@ -3,7 +3,14 @@
     <p>{{ populatedText }}</p>
   </div>
   <form action="" id="keyboardForm">
-    <input type="text" id="keyboardInput" @keypress="keystrokeChecker" />
+    <input
+      type="text"
+      id="keyboardInput"
+      @keypress="
+        keystrokeChecker;
+        randomLoremArray;
+      "
+    />
   </form>
 </template>
 
@@ -31,7 +38,7 @@ export default {
     },
     randomLoremArray(str) {
       this.populatedTextArray = str.split("");
-      this.$emit("keystroke-checker", str.split(""));
+      this.$emit("text-generator", str.split(""));
     },
     keystrokeChecker(e) {
       this.$emit("keystroke-checker", e.key);

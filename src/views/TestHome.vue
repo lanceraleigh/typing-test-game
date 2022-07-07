@@ -7,7 +7,11 @@
     <p>Time: {{}}</p>
   </div>
   <keyBoard />
-  <textPrompt @keystroke-checker="setCurrentKey" />
+  <textPrompt
+    @keystroke-checker="setCurrentKey"
+    @text-generator="setstringArray"
+    @keypress="checkAccuracy"
+  />
 </template>
 
 <script>
@@ -25,11 +29,26 @@ export default {
       wordsPerMinute: [],
       accuracyPercentage: [],
       remaingTime: [],
+      initialI: 0,
+      stringArray: [],
     };
   },
   methods: {
     setCurrentKey(k) {
       this.currentKey = k;
+    },
+    setStringArray(arr) {
+      this.stringArray = arr;
+      console.log(this.stringArray);
+    },
+    checkAccuracy() {
+      let i = this.initialI;
+      if (this.stringArray[i] === this.currentKey) {
+        console.log("right");
+        this.initialI = this.initialI + 1;
+      } else {
+        console.log("wrong");
+      }
     },
   },
 };
