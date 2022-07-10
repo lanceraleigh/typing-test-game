@@ -4,24 +4,26 @@
     <p>Current Key: {{ currentKey }}</p>
     <p>Wpm: {{}}</p>
     <p>Accuracy: {{}}</p>
-    <p>Time: {{}}</p>
+    <timer-component />
   </div>
-  <keyBoard />
+  <!-- <keyBoard /> -->
   <textPrompt
     @keystroke-checker="setCurrentKey"
     @text-generator="setstringArray"
-    @keypress="checkAccuracy"
   />
 </template>
 
 <script>
-import keyBoard from "../components/keyBoard.vue";
+// import keyBoard from "../components/keyBoard.vue";
 import textPrompt from "../components/textPrompt.vue";
+import timerComponent from "../components/timerComponent.vue";
+
 export default {
   name: "TestHome",
   components: {
-    keyBoard,
+    // keyBoard,
     textPrompt,
+    timerComponent,
   },
   data() {
     return {
@@ -36,6 +38,7 @@ export default {
   methods: {
     setCurrentKey(k) {
       this.currentKey = k;
+      this.checkAccuracy();
     },
     setStringArray(arr) {
       this.stringArray = arr;
@@ -57,8 +60,8 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 #keyboardInput {
-  height: 20rem;
-  width: 40rem;
+  /* height: 20rem;
+  width: 40rem; */
   caret-color: transparent;
 }
 </style>
